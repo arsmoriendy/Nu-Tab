@@ -1,0 +1,71 @@
+.TwitchFollowList .list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.TwitchFollowList .header {
+  font-weight: 600;
+}
+
+.TwitchFollowList .list .channel {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 1em;
+  align-items: center;
+  padding: 5px;
+  filter: none;
+}
+
+.TwitchFollowList .list .channel:nth-child(odd) {
+  background-color: rgba(var(--vibrant), 0.1);
+}
+
+.TwitchFollowList .list .channel:hover {
+  background-color: rgba(var(--vibrant), 0.2);
+}
+
+.TwitchFollowList .list .channel .value > * {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 3fr;
+}
+
+.TwitchFollowList .list .channel .name {
+  font-weight: bold;
+}
+
+.TwitchFollowList .list .channel .gameName {
+  font-size: smaller;
+  font-style: italic;
+}
+
+.TwitchFollowList .list .channel .icon {
+  font-size: 0.8em;
+}
+
+.TwitchFollowList .channel .thumbnail {
+  position: fixed;
+  width: min-content;
+  overflow: hidden;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.TwitchFollowList .channel .thumbnail div {
+  white-space: normal;
+  padding: 5px;
+  background-color: rgba(var(--vibrant), 0.1);
+}
+
+.TwitchFollowList .empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.TwitchFollowList .empty img {
+  object-fit: contain;
+  height: 1em;
+}

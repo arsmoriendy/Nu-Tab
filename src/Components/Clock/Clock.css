@@ -1,0 +1,22 @@
+.Clock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  min-width: 15em;
+}
+
+.Clock .time {
+  display: flex;
+  align-items: baseline;
+  font-size: xx-large;
+}
+
+.Clock .time .ampm {
+  font-size: medium;
+  font-weight: 600;
+}
+
+.Clock .day {
+  font-weight: 600;
+}

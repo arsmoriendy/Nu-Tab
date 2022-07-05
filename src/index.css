@@ -1,0 +1,43 @@
+@font-face {
+  font-family: Iosveka;
+  src: url(./fonts/Iosevka\ Nerd\ Font\ Complete.ttf);
+}
+
+@font-face {
+  font-family: brandIcons;
+  src: url(./fonts/fa-brands-400.ttf);
+}
+
+@font-face {
+  font-family: solidIcons;
+  src: url(./fonts/fa-solid-900.ttf);
+}
+
+@font-face {
+  font-family: regularIcons;
+  src: url(./fonts/fa-regular-400.ttf);
+}
+
+body {
+  --vibrant: 255, 255, 255;
+  --muted: 0, 0, 0;
+  --vibrantRgb: rgb(var(--vibrant));
+  --mutedRgb: rgb(var(--muted));
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  background-color: var(--mutedRgb);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

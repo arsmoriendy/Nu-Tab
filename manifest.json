@@ -1,0 +1,9 @@
+{
+  "manifest_version": 2,
+  "name": "Nu Tab",
+  "version": "0.3.2",
+  "description": "Overides chromium's New Tab page",
+  "chrome_url_overrides": {
+    "newtab": "./build/index.html"
+  }
+}
