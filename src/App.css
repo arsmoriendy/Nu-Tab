@@ -1,3 +1,21 @@
+#background {
+  position: fixed;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#blur {
+  position: fixed;
+  filter: blur(1000px);
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
 .App * {
   transition: 0.2s ease;
   white-space: nowrap;
@@ -5,7 +23,6 @@
 }
 
 .button1 {
-  border: none;
   cursor: pointer;
   border: var(--vibrantRgb) 1px solid;
   color: var(--vibrantRgb);

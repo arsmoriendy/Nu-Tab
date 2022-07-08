@@ -93,7 +93,14 @@ export default class App extends React.Component {
     } else {
       //Set bgImg
       const bgImg = URL.createObjectURL(dataURItoBlob(localStorage["bgImg"]));
-      document.body.style.setProperty("background-image", `url(${bgImg})`);
+      document
+        .querySelector("#background")
+        .style.setProperty("background-image", `url(${bgImg})`);
+
+      const blur = document.createElement("div");
+      blur.setAttribute("id", "blur");
+      blur.style.setProperty("background-image", `url(${bgImg})`);
+      document.body.querySelector(".App").appendChild(blur);
 
       //Set color vairables
       const dominantColors = JSON.parse(
@@ -193,6 +200,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <div id="background" />
         <Settings
           settings={this.state.settings}
           updateSettings={(settings) => this.setState({ settings: settings })}
