@@ -8,11 +8,22 @@
 
 .Clock .time {
   display: flex;
-  align-items: baseline;
+  gap: 5px;
+  align-items: center;
   font-size: xx-large;
 }
 
-.Clock .time .ampm {
+.Clock .hour {
+  display: flex;
+  flex-direction: column;
+}
+
+.Clock .hour > div {
+  padding-right: 5px;
+  font-size: 0.7em;
+}
+
+.Clock .time .minute .ampm {
   font-size: medium;
   font-weight: 600;
 }

@@ -98,7 +98,11 @@ export default class Settings extends React.Component {
     const settingTemplates = {
       Clock: [
         {
-          radio: { component: "Clock", tag: "Format", values: ["24h", "12h"] },
+          radio: {
+            component: "Clock",
+            tag: "Format",
+            values: ["24h", "12h", "both"],
+          },
         },
         {
           radio: {

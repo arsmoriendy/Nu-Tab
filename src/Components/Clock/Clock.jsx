@@ -16,8 +16,14 @@ export default class Clock extends React.Component {
     const setTime = () => {
       const now = new Date();
 
-      const hour = now.getHours();
-      const minute = now.getMinutes();
+      const hour = {
+        "24h": now.getHours().toString().padStart(2, "0"),
+        "12h":
+          now.getHours() > 12
+            ? (now.getHours() - 12).toString().padStart(2, "0")
+            : now.getHours().toString().padStart(2, "0"),
+      };
+      const minute = now.getMinutes().toString().padStart(2, "0");
       const day = now.toLocaleDateString(undefined, { weekday: "long" });
       const date = now.toLocaleDateString(undefined, {
         month: "long",
@@ -56,17 +62,44 @@ export default class Clock extends React.Component {
           }}
         >
           <div className="time">
-            <div className="hour">
-              {settings.Clock["Format"] === "12h" && hour > 12
-                ? hour - 12
-                : hour}
+            <div
+              className="hour"
+              style={{
+                borderRight:
+                  settings.Clock["Format"] === "both" &&
+                  "1px solid var(--vibrantRgb)",
+              }}
+            >
+              {(() => {
+                switch (settings.Clock["Format"]) {
+                  case "24h":
+                    return hour["24h"];
+                  case "12h":
+                    return hour["12h"];
+                  case "both":
+                    return (
+                      <>
+                        <div className="12h">{hour["12h"]}</div>
+                        <div
+                          style={{ borderTop: "1px solid var(--vibrantRgb)" }}
+                        />
+                        <div className="24h">{hour["24h"]}</div>
+                      </>
+                    );
+                  default:
+                    break;
+                }
+              })()}
             </div>
 
-            <div className="minute">:{minute.toString().padStart(2, "0")}</div>
+            {settings.Clock["Format"] !== "both" && ":"}
 
-            {settings.Clock["Format"] === "12h" && (
-              <div className="ampm">{hour < 12 ? "AM" : "PM"}</div>
-            )}
+            <div className="minute">
+              {minute}
+              {/(12h)|(both)/.test(settings.Clock["Format"]) && (
+                <span className="ampm">{hour < 12 ? "AM" : "PM"}</span>
+              )}
+            </div>
           </div>
 
           {settings.Clock["Show Date"] === "yes" && (
