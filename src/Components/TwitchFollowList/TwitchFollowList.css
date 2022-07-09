@@ -1,3 +1,10 @@
+.TwitchFollowList.container {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  overflow: hidden;
+}
+
 .TwitchFollowList .list {
   position: relative;
   display: flex;
@@ -13,9 +20,9 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
   column-gap: 1em;
+  filter: none;
   align-items: center;
   padding: 5px;
-  filter: none;
 }
 
 .TwitchFollowList .list .channel:nth-child(odd) {
