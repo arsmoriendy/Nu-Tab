@@ -10,10 +10,12 @@
 
 #blur {
   position: fixed;
-  filter: blur(1000px);
   z-index: -1;
+  filter: blur(10px);
   width: 100vw;
   height: 100vh;
+  transform: scale(1.1);
+  background-size: 100% 100%;
 }
 
 .App * {
