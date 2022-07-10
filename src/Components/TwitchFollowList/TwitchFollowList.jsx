@@ -186,11 +186,12 @@ export default class TwitchFollowList extends React.Component {
                               hours = hours - 1;
                               minutes = minutes + 60;
                             }
-                            return `${hours
-                              .toString()
-                              .padStart(2, "0")}:${minutes
-                              .toString()
-                              .padStart(2, "0")}`;
+                            return (
+                              <span>
+                                {hours.toString().padStart(2, "0")}:
+                                {minutes.toString().padStart(2, "0")}
+                              </span>
+                            );
                           })()}
                         </div>
                       </div>
