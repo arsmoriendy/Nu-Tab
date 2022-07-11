@@ -26,17 +26,24 @@ export default class Clock extends React.Component {
             : h.toString().padStart(2, "0"),
       };
       const minute = now.getMinutes().toString().padStart(2, "0");
-      const day = now.toLocaleDateString(undefined, { weekday: "long" });
+      const seconds = now.getSeconds().toString().padStart(2, "0");
+      const day = now
+        .toLocaleDateString(undefined, { weekday: "short" })
+        .toUpperCase();
       const date = now.toLocaleDateString(undefined, {
-        month: "long",
         day: "2-digit",
       });
+      const month = now
+        .toLocaleDateString(undefined, { month: "short" })
+        .toUpperCase();
 
       this.setState({
         hour: hour,
         minute: minute,
+        seconds: seconds,
         day: day,
         date: date,
+        month: month,
       });
     };
 
@@ -52,7 +59,7 @@ export default class Clock extends React.Component {
   }
 
   render() {
-    const { hour, minute, day, date } = this.state;
+    const { hour, minute, seconds, day, date, month } = this.state;
     const settings = this.props.settings;
     return (
       <>
@@ -64,47 +71,32 @@ export default class Clock extends React.Component {
           }}
         >
           <div className="time">
-            <div
-              className="hour"
-              style={{
-                borderRight:
-                  settings.Clock["Format"] === "both" &&
-                  hour["raw"] > 12 &&
-                  "1px solid var(--vibrantRgb)",
-              }}
-            >
+            <div className="hour">
               {(() => {
                 switch (settings.Clock["Format"]) {
                   case "24h":
-                    return hour["24h"];
+                    return <span>{hour["24h"]}</span>;
                   case "12h":
-                    return hour["12h"];
-                  case "both":
-                    if (hour["raw"] > 12) {
-                      return (
-                        <>
-                          <div className="12h">{hour["12h"]}</div>
-                          <div
-                            style={{ borderTop: "1px solid var(--vibrantRgb)" }}
-                          />
-                          <div className="24h">{hour["24h"]}</div>
-                        </>
-                      );
-                    } else {
-                      return hour["24h"];
-                    }
+                    return <span>{hour["12h"]}</span>;
                   default:
                     break;
                 }
               })()}
             </div>
 
-            {(settings.Clock["Format"] !== "both" || hour["raw"] < 12) && ":"}
+            <span
+              style={{ opacity: seconds % 2 === 0 ? "1" : "var(--opacity)" }}
+            >
+              :
+            </span>
 
-            <div className="minute">
-              {minute}
-              {/(12h)|(both)/.test(settings.Clock["Format"]) && (
+            <div className="minute">{minute}</div>
+            <div className="extras">
+              {settings.Clock["Extras"]["AM/PM"] && (
                 <span className="ampm">{hour["raw"] < 12 ? "AM" : "PM"}</span>
+              )}
+              {settings.Clock["Extras"]["seconds"] && (
+                <div className="seconds">{seconds}</div>
               )}
             </div>
           </div>
@@ -112,7 +104,10 @@ export default class Clock extends React.Component {
           {settings.Clock["Show Date"] === "yes" && (
             <div className="dayDate">
               <div className="day">{day}</div>
-              <div className="date" children={date} />
+              <div>
+                <span className="date">{date}</span>-
+                <span className="month">{month}</span>
+              </div>
             </div>
           )}
         </div>

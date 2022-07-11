@@ -49,6 +49,39 @@ export default class Settings extends React.Component {
     );
   };
 
+  checkList = (format) => {
+    const settings = JSON.parse(JSON.stringify(this.props.settings));
+
+    const component = format.component;
+    const tag = format.tag;
+    const values = format.values;
+
+    return (
+      <React.Fragment key={component + tag}>
+        <div className="tag">{tag}</div>
+
+        <div className={`${tag} value radio`}>
+          {values.map((value) => (
+            <button
+              className={`button1 ${
+                settings[component][tag][value] && "active"
+              }`}
+              onClick={() => {
+                settings[component][tag][value] =
+                  !settings[component][tag][value];
+                this.props.updateSettings(settings);
+                localStorage["settings"] = JSON.stringify(settings);
+              }}
+              key={component + tag + value}
+            >
+              {value}
+            </button>
+          ))}
+        </div>
+      </React.Fragment>
+    );
+  };
+
   numberInput = (format) => {
     const component = format.component;
     const tag = format.tag;
@@ -101,7 +134,7 @@ export default class Settings extends React.Component {
           radio: {
             component: "Clock",
             tag: "Format",
-            values: ["24h", "12h", "both"],
+            values: ["24h", "12h"],
           },
         },
         {
@@ -109,6 +142,13 @@ export default class Settings extends React.Component {
             component: "Clock",
             tag: "Show Date",
             values: ["yes", "no"],
+          },
+        },
+        {
+          checkList: {
+            component: "Clock",
+            tag: "Extras",
+            values: ["AM/PM", "seconds"],
           },
         },
       ],

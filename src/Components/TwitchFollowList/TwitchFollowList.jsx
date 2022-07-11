@@ -157,7 +157,16 @@ export default class TwitchFollowList extends React.Component {
                           <span className="icon">&#xf007;</span>
                           {(() => {
                             const viewCount = channel.viewer_count.toString();
-                            if (viewCount > 999) {
+                            if (viewCount > 9999) {
+                              return (
+                                <div>
+                                  <span style={{ fontWeight: "bold" }}>
+                                    {viewCount.slice(0, -3)}
+                                  </span>
+                                  <span>.{viewCount.slice(-3, -2)}k</span>
+                                </div>
+                              );
+                            } else if (viewCount > 999) {
                               return (
                                 <div>
                                   <span style={{ fontWeight: "bold" }}>

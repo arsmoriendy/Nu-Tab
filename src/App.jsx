@@ -17,7 +17,11 @@ export default class App extends React.Component {
         ? JSON.parse(localStorage["settings"])
         : {
             componentList: ["WallpaperMeta", "TwitchFollowList", "Clock"],
-            Clock: { Format: "12h", "Show Date": "yes" },
+            Clock: {
+              Format: "12h",
+              "Show Date": "yes",
+              Extras: { "AM/PM": true, seconds: false },
+            },
             TwitchFollowList: {
               id: "",
               at: "",

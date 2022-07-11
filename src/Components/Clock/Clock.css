@@ -4,6 +4,29 @@
   justify-content: space-between;
   text-align: center;
   min-width: 15em;
+  --opacity: 0.2;
+}
+
+.Clock * {
+  position: relative;
+}
+
+.Clock .time,
+.Clock .dayDate {
+  font-family: D7MMBI;
+}
+
+.Clock .extras .ampm,
+.Clock .dayDate .month,
+.Clock .dayDate .day {
+  font-family: D14CMBI;
+}
+
+.Clock *::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: var(--opacity);
 }
 
 .Clock .time {
@@ -11,24 +34,44 @@
   gap: 5px;
   align-items: center;
   font-size: xx-large;
+  align-items: flex-end;
 }
 
-.Clock .hour {
+.Clock .time .hour {
   display: flex;
   flex-direction: column;
 }
 
-.Clock .hour > div {
-  padding-right: 5px;
-  font-size: 0.7em;
-  font-weight: bold;
+.Clock .time .minute {
+  display: flex;
 }
 
-.Clock .time .minute .ampm {
-  font-size: medium;
-  font-weight: 600;
+.Clock .time .extras {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.5em;
 }
 
-.Clock .day {
-  font-weight: 600;
+.Clock .dayDate {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Clock .time .extras .ampm::after {
+  content: "~~";
+}
+
+.Clock .time .extras .seconds::after,
+.Clock .time .hour > *::after,
+.Clock .time .minute::after,
+.Clock .dayDate .date::after,
+.Clock .dayDate .year::after {
+  content: "88";
+}
+
+.Clock .dayDate .month::after,
+.Clock .dayDate .day::after {
+  content: "~~~";
 }
