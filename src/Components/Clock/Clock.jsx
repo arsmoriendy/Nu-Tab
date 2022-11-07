@@ -27,9 +27,7 @@ export default class Clock extends React.Component {
       };
       const minute = now.getMinutes().toString().padStart(2, "0");
       const seconds = now.getSeconds().toString().padStart(2, "0");
-      const day = now
-        .toLocaleDateString(undefined, { weekday: "short" })
-        .toUpperCase();
+      const dayInt = now.getDay();
       const date = now.toLocaleDateString(undefined, {
         day: "2-digit",
       });
@@ -41,7 +39,7 @@ export default class Clock extends React.Component {
         hour: hour,
         minute: minute,
         seconds: seconds,
-        day: day,
+        dayInt: dayInt,
         date: date,
         month: month,
       });
@@ -59,8 +57,66 @@ export default class Clock extends React.Component {
   }
 
   render() {
-    const { hour, minute, seconds, day, date, month } = this.state;
+    const { hour, minute, seconds, dayInt, date, month } = this.state;
     const settings = this.props.settings;
+
+    const days = [];
+    for (let i = 0; i < 7; i++) {
+      switch (i) {
+        case 0:
+          days.push(
+            <span className={i === dayInt ? "current" : ""} key={i}>
+              S
+            </span>
+          );
+          break;
+        case 1:
+          days.push(
+            <span className={i === dayInt ? "current" : ""} key={i}>
+              M
+            </span>
+          );
+          break;
+        case 2:
+          days.push(
+            <span className={i === dayInt ? "current" : ""} key={i}>
+              T
+            </span>
+          );
+          break;
+        case 3:
+          days.push(
+            <span className={i === dayInt ? "current" : ""} key={i}>
+              W
+            </span>
+          );
+          break;
+        case 4:
+          days.push(
+            <span className={i === dayInt ? "current" : ""} key={i}>
+              T
+            </span>
+          );
+          break;
+        case 5:
+          days.push(
+            <span className={i === dayInt ? "current" : ""} key={i}>
+              F
+            </span>
+          );
+          break;
+        case 6:
+          days.push(
+            <span className={i === dayInt ? "current" : ""} key={i}>
+              S
+            </span>
+          );
+          break;
+        default:
+          break;
+      }
+    }
+
     return (
       <>
         <div
@@ -102,10 +158,11 @@ export default class Clock extends React.Component {
           </div>
 
           {settings.Clock["Show Date"] === "yes" && (
-            <div className="dayDate">
-              <div className="day">{day}</div>
-              <div>
-                <span className="date">{date}</span>-
+            <div className="dayDateMonth">
+              <div className="day">{days}</div>
+              <div className="dateMonth">
+                <span className="date">{date}</span>
+                <span className="sep">{"//"}</span>
                 <span className="month">{month}</span>
               </div>
             </div>

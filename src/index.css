@@ -19,48 +19,43 @@
 }
 
 @font-face {
-  font-family: D14MM;
-  src: url(./fonts/DSEG14-Modern-MINI/DSEG14ModernMini-Regular.woff);
-}
-
-@font-face {
-  font-family: D14MMB;
-  src: url(./fonts/DSEG14-Modern-MINI/DSEG14ModernMini-Bold.woff);
-}
-
-@font-face {
-  font-family: D14MMBI;
-  src: url(./fonts/DSEG14-Modern-MINI/DSEG14ModernMini-BoldItalic.woff);
-}
-
-@font-face {
-  font-family: D7MM;
-  src: url(./fonts/DSEG7-Modern-MINI/DSEG7ModernMini-Regular.woff);
-}
-
-@font-face {
-  font-family: D7MMB;
-  src: url(./fonts/DSEG7-Modern-MINI/DSEG7ModernMini-Bold.woff);
-}
-
-@font-face {
-  font-family: D7MMBI;
-  src: url(./fonts/DSEG7-Modern-MINI/DSEG7ModernMini-BoldItalic.woff);
+  font-family: D14C;
+  src: url(./fonts/fonts-DSEG_v050b1/DSEG14-Classic/DSEG14Classic-Regular.ttf);
 }
 
 @font-face {
   font-family: D14CM;
-  src: url(./fonts/DSEG14-Classic-MINI/DSEG14ClassicMini-Regular.woff);
+  src: url(./fonts/fonts-DSEG_v050b1/DSEG14-Classic-MINI/DSEG14ClassicMini-Regular.ttf);
 }
 
 @font-face {
-  font-family: D14CMB;
-  src: url(./fonts/DSEG14-Classic-MINI/DSEG14ClassicMini-Bold.woff);
+  font-family: D14M;
+  src: url(./fonts/fonts-DSEG_v050b1/DSEG14-Modern/DSEG14Modern-Regular.ttf);
 }
 
 @font-face {
-  font-family: D14CMBI;
-  src: url(./fonts/DSEG14-Classic-MINI/DSEG14ClassicMini-BoldItalic.woff);
+  font-family: D14MM;
+  src: url(./fonts/fonts-DSEG_v050b1/DSEG14-Modern-MINI/DSEG14ModernMini-Regular.ttf);
+}
+
+@font-face {
+  font-family: D7C;
+  src: url(./fonts/fonts-DSEG_v050b1/DSEG7-Classic/DSEG7Classic-Regular.ttf);
+}
+
+@font-face {
+  font-family: D7CM;
+  src: url(./fonts/fonts-DSEG_v050b1/DSEG7-Classic-MINI/DSEG7ClassicMini-Regular.ttf);
+}
+
+@font-face {
+  font-family: D7M;
+  src: url(./fonts/fonts-DSEG_v050b1/DSEG7-Modern-MINI/DSEG7ModernMini-Regular.ttf);
+}
+
+@font-face {
+  font-family: D7MM;
+  src: url(./fonts/fonts-DSEG_v050b1/DSEG7-Modern-MINI/DSEG7ModernMini-Regular.ttf);
 }
 
 body {
