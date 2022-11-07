@@ -53,12 +53,8 @@ input.button1 {
   padding: 10px;
   color: var(--vibrantRgb);
   background: rgba(var(--muted), 0.8);
-  border: 1px solid var(--vibrantRgb);
-  box-shadow: -7px 7px 0 0 rgba(var(--muted), 0.8);
-}
-
-.containerR {
-  box-shadow: 7px 7px 0 0 rgba(var(--muted), 0.8);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    var(--vibrantRgb) 0px 0px 0px 1px;
 }
 
 .content {
