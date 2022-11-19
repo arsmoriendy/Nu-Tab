@@ -1,13 +1,11 @@
 import React from "react";
 import Separator from "../Separator";
 import "./TwitchFollowList.css";
-import getApi from "../../getApi.js";
 
 export default class TwitchFollowList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      clientId: getApi("Twitch"),
       followList: [],
     };
   }

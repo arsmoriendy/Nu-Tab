@@ -170,16 +170,26 @@ export default class WallpaperMeta extends React.Component {
             }`}
             onClick={() => {
               //Sends mandatory download fetch to unsplash
-              fetch(`${bgMeta.links.download_location}`, {
-                headers: { Authorization: `Client-ID ${this.props.client_id}` },
+              fetch("http://arsmoriendy.duckdns.org/api/unsplash/download", {
+                method: "POST",
+                headers: {
+                  Authorization: "Basic arsmoriendy",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  id: bgMeta.id,
+                  ixid: bgMeta.links.download_location.slice(
+                    bgMeta.links.download_location.indexOf("?") + 6
+                  ),
+                }),
               });
 
               this.setState({ imageDownload: "started" });
 
               //Fetches raw background image and then downloads it
               fetch(bgMeta.urls.raw)
-                .then(res => res.blob())
-                .then(blob => {
+                .then((res) => res.blob())
+                .then((blob) => {
                   const url = URL.createObjectURL(blob);
 
                   const a = document.createElement("a");
@@ -193,7 +203,7 @@ export default class WallpaperMeta extends React.Component {
 
                   this.setState({ imageDownload: "finished" });
                 })
-                .catch(err => {
+                .catch((err) => {
                   console.log(err);
                   this.setState({ imageDownload: "failed" });
                 });

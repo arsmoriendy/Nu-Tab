@@ -6,13 +6,11 @@ import Clock from "./Components/Clock/Clock";
 import Settings from "./Components/Settings/Settings";
 import Notifications from "./Components/Notifications/Notifications";
 import TwitchFollowList from "./Components/TwitchFollowList/TwitchFollowList";
-import getApi from "./getApi.js";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      client_id: getApi("Unsplash"),
       settings: localStorage["settings"]
         ? JSON.parse(localStorage["settings"])
         : {
@@ -40,8 +38,8 @@ export default class App extends React.Component {
   componentDidMount() {
     (async () => {
       const apiFetch = await fetch(
-        `https://api.unsplash.com/photos/random?topics=bo8jQKTaE0Y&orientation=landscape`,
-        { headers: { Authorization: `Client-ID ${this.state.client_id}` } }
+        `http://arsmoriendy.duckdns.org/api/unsplash`,
+        { headers: { Authorization: `Basic arsmoriendy` } }
       );
       const bgMeta = await apiFetch.json();
 
